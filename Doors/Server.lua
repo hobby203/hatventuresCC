@@ -1,7 +1,7 @@
 rednet.open("bottom")
 
 function authorise(request)
-	players = io.open("disk/allowed")
+	players = io.open("disk/allowed","r")
 	for player in players:lines() do
 		if request == player then
 			return true
