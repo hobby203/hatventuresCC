@@ -11,7 +11,7 @@ function allowed(player,authServer)
 end
 
 function door(player,authServer)
-	if allowed(player,server) then
+	if allowed(player,authServer) then
 		redstone.setOutput("top",true)
 		sleep(4)
 		redstone.setOutput("top",false)
