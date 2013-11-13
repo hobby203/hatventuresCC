@@ -1,7 +1,7 @@
 rednet.open("bottom")
 
 function allowed(player,authServer)
-	rednet.send(server,name)
+	rednet.send(authServer,player)
 	id, message, distance = rednet.receive()
 	if message then
 		return true
@@ -11,7 +11,7 @@ function allowed(player,authServer)
 end
 
 function door(player,authServer)
-	if allowed(name,server) then
+	if allowed(player,server) then
 		redstone.setOutput("top",true)
 		sleep(4)
 		redstone.setOutput("top",false)
@@ -23,9 +23,9 @@ end
 
 function logger(player,logServer,state)
 	if state then
-		rednet.send(logServer,name.." was granted access "..os.time.." via computer "..os.getComputerID())
+		rednet.send(logServer,player.." was granted access "..os.time.." via computer "..os.getComputerID())
 	else
-		rednet.send(logServer,name.." tried to get in at "..os.time.." via computer "..os.getComputerID())
+		rednet.send(logServer,player.." tried to get in at "..os.time.." via computer "..os.getComputerID())
 	end
 end
 
