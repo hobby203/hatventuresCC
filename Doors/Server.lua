@@ -5,10 +5,9 @@ function authorise(request)
 	for player in players:lines() do
 		if request == player then
 			return true
-		else
-			return false
 		end
 	end
+	return false
 end
 
 function receiveRequest()

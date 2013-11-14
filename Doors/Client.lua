@@ -3,11 +3,7 @@ rednet.open("bottom")
 function allowed(player,authServer)
 	rednet.send(authServer,player)
 	id, message, distance = rednet.receive()
-	if message then
-		return true
-	else
-		return false
-	end
+	return message
 end
 
 function door(player,authServer)
