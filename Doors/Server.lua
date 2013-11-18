@@ -33,11 +33,7 @@ function main()
     local authFile="disk/allowed"
   end
   player = string.sub(player,2)
-  if authorise(player,authFile) then
-    allowPlayer(id,true)
-  else
-    allowPlayer(id,false)
-  end
+  allowPlayer(id,authorise(player,authFile))
 end
 
 while true do
