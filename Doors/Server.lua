@@ -27,10 +27,11 @@ end
 
 function main()
   local id, player = receiveRequest()
+  local authFile
   if string.sub(player,1,1) == "2" then
-    local authFile="disk/admins"
+    authFile="disk/admins"
   elseif string.sub(player,1,1) == "1" then
-    local authFile="disk/allowed"
+    authFile="disk/allowed"
   end
   player = string.sub(player,2)
   allowPlayer(id,authorise(player,authFile))
