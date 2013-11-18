@@ -1,7 +1,8 @@
 rednet.open("bottom")
+doorType = "2"
 
 function allowed(player,authServer)
-  rednet.send(authServer,player)
+  rednet.send(authServer,doorType..player)
   id, message, distance = rednet.receive()
   return message
 end

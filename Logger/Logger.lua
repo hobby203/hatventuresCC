@@ -18,8 +18,8 @@ function receiveMessage()
 end
 
 function main()
-  log = receiveMessage()
-  if writeFile(log)
+  local log = receiveMessage()
+  if writeFile(log) then
     print("Log Added!")
   else
     print("Log failed, fix it")

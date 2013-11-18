@@ -1,7 +1,7 @@
 rednet.open("bottom")
 
-function authorise(request)
-  local players = io.open("disk/allowed","r")
+function authorise(request,authFile)
+  local players = io.open(authFile,"r")
   if players then
     for player in players:lines() do
       if request == player then
@@ -27,7 +27,13 @@ end
 
 function main()
   local id, player = receiveRequest()
-  if authorise(player) then
+  if string.sub(player,1,1) == "2" then
+    local authFile="disk/admins"
+  elseif string.sub(player,1,1) == "1" then
+    local authFile="disk/allowed"
+  end
+  player = string.sub(player,2)
+  if authorise(player,authFile) then
     allowPlayer(id,true)
   else
     allowPlayer(id,false)
