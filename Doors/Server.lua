@@ -1,10 +1,15 @@
 rednet.open("bottom")
 
-function authorise(request,authFile)
+function authorise(request,authFile,doorType)
+  if authFile == "bear" and request == "Draconwraith"
+    return true
+  else
+    authFile="disk/allowed"
+  end
   local players = io.open(authFile,"r")
   if players then
     for player in players:lines() do
-      if request == player or (request == "Draconwraith" and authFile="disk/allowed") then
+      if request == player then
         players:close()
         return true
       end
@@ -30,11 +35,13 @@ function main()
   local authFile
   if string.sub(player,1,1) == "2" then
     authFile="disk/admins"
-  elseif string.sub(player,1,1) == "1" or string.sub(player,1,1) == "0" then
+  elseif string.sub(player,1,1) == "1" then
     authFile="disk/allowed"
+  elseif string.sub(player,1,1) == "0" then
+    authFile="bear"
   end
   player = string.sub(player,2)
-  allowPlayer(id,authorise(player,authFile))
+  allowPlayer(id,authorise(player,authFile,doorType))
 end
 
 while true do
