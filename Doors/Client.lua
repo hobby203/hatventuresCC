@@ -1,6 +1,6 @@
 rednet.open("bottom")
 doorType = "2"
---doorType = 1 for general, 2 for admin
+--doorType = 0 for bear, 1 for general, 2 for admin
 
 function allowed(player,authServer)
   rednet.send(authServer,doorType..player)

