@@ -1,7 +1,15 @@
-function logger(player,logServer,message)
-  rednet.send(logServer,os.time().." "..player.." Added '"..message.."' to the message board")
-end
- 
+function checkFuel()
+  if turtle.getFuelLevel() < 1 then
+      print("System needs refueling.")
+      turtle.select(16)
+      turtle.reFuel()
+      turtle.select(1)
+      print("System refueled")
+  else
+  print("No extra fuel needed.")
+  end
+end    
+
 function pulling()
   local event, name, message = os.pullEvent("chat")
   return name, message
@@ -58,6 +66,7 @@ function close(allowed)
 end
 
 while true do
+  checkFuel()
   local player, message = pulling()
   if direction(message) == 2 then
     allowed = checkingName("allowed",player)
