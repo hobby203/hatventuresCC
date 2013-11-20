@@ -57,7 +57,7 @@ function close(allowed)
   if allowed then
     turtle.up()
     turtle.placeUp()
-    turle.down()
+    turtle.down()
     turtle.placeUp()
     return true
   else
