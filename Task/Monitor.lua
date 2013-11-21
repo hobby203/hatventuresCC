@@ -10,6 +10,8 @@ function pulling()
 end
 
 function isAdmin(message)
+  if string.sub(message,1,6) == "!mtask" then
+    return 3
   if string.sub(message,1,6) == "!atask" then
     return 2
   elseif string.sub(message,1,5) == "!task" then
@@ -59,5 +61,9 @@ while true do
     allowed = checkingName("disk/allowed",player) 
     main(allowed,"disk/Tasks",6,message)
     logger(player,logServer,message)
+  elseif isAdmin(message) == 3 then
+      allowed = checkingName("disk/allowed",player)
+      main(allowed,"disk/MTasks",7,message)
+      logger(player,logServer,message)
   end
 end
