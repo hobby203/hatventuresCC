@@ -12,7 +12,7 @@ end
 function isAdmin(message)
   if string.sub(message,1,6) == "!mtask" then
     return 3
-  if string.sub(message,1,6) == "!atask" then
+  elseif string.sub(message,1,6) == "!atask" then
     return 2
   elseif string.sub(message,1,5) == "!task" then
     return 1
