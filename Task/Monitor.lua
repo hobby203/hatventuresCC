@@ -62,8 +62,8 @@ while true do
     main(allowed,"disk/Tasks",6,message)
     logger(player,logServer,message)
   elseif isAdmin(message) == 3 then
-      allowed = checkingName("disk/allowed",player)
-      main(allowed,"disk/MTasks",7,message)
-      logger(player,logServer,message)
+    allowed = checkingName("disk/allowed",player)
+    main(allowed,"disk/MTasks",7,message)
+    logger(player,logServer,message)
   end
 end
