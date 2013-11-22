@@ -19,7 +19,7 @@ function display(taskFile)
      sleep(5)
    end
 end
-function buttonDrawing()
+
 
 while true do
   if type == 1 then
