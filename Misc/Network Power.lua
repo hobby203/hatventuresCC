@@ -1,46 +1,51 @@
 computerIDs = {1,2,3}
-
-function args(...,computers)
-  print(...)
-  if ... == nil or #... > 1 then
-    return ...
-  else
-    return table.insert(computers,1,...)
-  end
-end
-
-function reboot(computer)
-  local device = peripheral.wrap(computer)
-  if device.reboot() then
-    return device
-  else
-    return false
-  end
-end
-
-function shutdown(computer)
-  local device = peripheral.wrap(computer)
-  if device.shutdown() then
-    return true
-  else
-    return false
-  end
-end
-
-function boot(computer)
-  local device = peripheral.wrap(computer)
-  if device.shutdown() then
-    return true
-  else
-    return false
-  end
-end
-
-function main(...,computers)
-  computers = args(...,computers)
-  print(computers)
+functions = {}
+ 
+function args(arguments,computers)
+  print(arguments)
+  print(computers[3])
   print(type(computers))
-  
+  if arguments == nil or type(arguments) ~= "string" then
+    return arguments
+  else
+    table.insert(computers,1,arguments)
+    return computers
+  end
+end
+ 
+functions['reboot'] = function(computer)
+  print("computer is "..computer)
+  print("trying to rebooot")
+  local device = peripheral.wrap(tostring(computer))
+  print("i got the device")
+  if device.getID() then
+    device.reboot()
+    return true
+  else
+    return false
+  end
+end
+ 
+functions['shutdown'] = function(computer)
+  local device = peripheral.wrap(computer)
+  if device.shutdown() then
+    return true
+  else
+    return false
+  end
+end
+ 
+functions['boot'] = function(computer)
+  local device = peripheral.wrap(computer)
+  if device.shutdown() then
+    return true
+  else
+    return false
+  end
+end
+ 
+function main(arguments,computerIDs)
+  computers = args(arguments,computerIDs)
   if computers == nil then
     print("No Computers present, exiting...")
   else
@@ -48,10 +53,15 @@ function main(...,computers)
       command = computers
     else
       command = computers[1]
+      table.remove(computers,1)
+      print("command is "..command)
     end
-    for computer in computers do
+    for key,computer in pairs(computers) do
+      print("gonna set the computer")
       computer = "computer_"..tostring(computer)
-      if _G[command](computer) then
+      print("worked, it's "..computer)
+      print(command)
+      if functions[command](computer) then
         print(computer.." "..func.." completed succesfully")
       else
         print(computer.." could not be reached, please check it is still on the network")
@@ -59,5 +69,5 @@ function main(...,computers)
     end
   end
 end
-
+ 
 main(...,computerIDs)
