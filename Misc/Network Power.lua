@@ -1,12 +1,10 @@
 computerIDs = {}
 
 function args(...)
-  if #... > 1 then
+  if ... = nil or #... == 1 then
     return ...
-  elseif #... == 1 then
-    return table.insert(computerIDs,1,arg[1])
   else
-    return nil
+    return table.insert(computerIDs,1,arg[1])
   end
 end
 
