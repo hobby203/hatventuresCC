@@ -1,6 +1,6 @@
 computerIDs = {}
 
-function args()
+function args(...)
   if #... > 1 then
     return ...
   elseif #... == 1
@@ -38,7 +38,7 @@ function boot(computer)
 end
 
 function main()
-  computers = args()
+  computers = args(...)
   func = computers[1]
   if computers == nil
     print("No Computers present, exiting...")
