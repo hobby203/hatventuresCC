@@ -3,8 +3,8 @@ computerIDs = {}
 function args(...)
   if #... > 1 then
     return ...
-  elseif #... == 1
-    return table.insert(computerIDs,1,...[1])
+  elseif #... == 1 then
+    return table.insert(computerIDs,1,arg[1])
   else
     return nil
   end
@@ -13,7 +13,7 @@ end
 function reboot(computer)
   local device = peripheral.wrap(computer)
   if device.reboot() then
-    return device.
+    return device
   else
     return false
   end
@@ -37,10 +37,10 @@ function boot(computer)
   end
 end
 
-function main()
+function main(...)
   computers = args(...)
   func = computers[1]
-  if computers == nil
+  if computers == nil then
     print("No Computers present, exiting...")
     break
   else
@@ -55,4 +55,6 @@ function main()
   end
 end
 
-
+while true do
+  main(...)
+end
