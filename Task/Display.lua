@@ -1,13 +1,15 @@
-m = peripheral.wrap("monitor_2")
-m.setTextScale(1)
+m = peripheral.wrap("monitor_7")
 
-while true do 
-  if fs.exists("disk/Tasks") then
+local type = 1
+
+function display(taskFile)
+  if fs.exists(taskFile) then
     m.clear()
+    m.setTextScale(1)
     term.setCursorPos(1,1)
     m.setCursorPos(1,1)
     term.redirect(m)
-    f = fs.open("disk/Tasks", "r")
+    f = fs.open(taskFile, "r")
     print(f.readAll())
     f.close()
     term.restore()
@@ -17,3 +19,16 @@ while true do
      sleep(5)
    end
 end
+
+
+while true do
+  if type == 1 then
+    display("disk/Tasks")
+    print("Main task file")
+  elseif type == 2 then
+    display("disk/MTasks")
+  elseif type == 3 then 
+    display("disk/ATasks")
+  end
+end
+
