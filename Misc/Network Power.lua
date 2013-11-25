@@ -42,7 +42,6 @@ function main(...)
   func = computers[1]
   if computers == nil then
     print("No Computers present, exiting...")
-    break
   else
     for computer in computers do
       computer = "computer_"..tostring(computer)
@@ -55,6 +54,4 @@ function main(...)
   end
 end
 
-while true do
-  main(...)
-end
+main(...)
