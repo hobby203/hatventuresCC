@@ -12,7 +12,7 @@ function display(monitorID,fileID)
     print(f.readAll())
     f.close()
     term.restore()
-    sleep(5)
+    sleep(1)
    else
      print("Disk not found checking again in 5 seconds.")
      sleep(5)
