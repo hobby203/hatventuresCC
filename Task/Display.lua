@@ -1,15 +1,14 @@
-m = peripheral.wrap("monitor_7")
 
-local type = 1
 
-function display(taskFile)
-  if fs.exists(taskFile) then
+function display(monitorID,fileID)
+  m = peripheral.wrap(monitorID)
+  if fs.exists(whatFile(fileID)) then
     m.clear()
     m.setTextScale(1)
     term.setCursorPos(1,1)
     m.setCursorPos(1,1)
     term.redirect(m)
-    f = fs.open(taskFile, "r")
+    f = fs.open(whatFile(fileID), "r")
     print(f.readAll())
     f.close()
     term.restore()
@@ -21,14 +20,19 @@ function display(taskFile)
 end
 
 
-while true do
+function whatFile(type)
   if type == 1 then
-    display("disk/Tasks")
-    print("Main task file")
+    return "disk/Tasks"
   elseif type == 2 then
-    display("disk/MTasks")
+    return "disk/MTasks"
   elseif type == 3 then 
-    display("disk/ATasks")
+    return "disk/ATasks"
   end
 end
 
+while true do
+  display("monitor_10",1)
+  display("monitor_11",1)
+  display("monitor_12",1)
+  display("monitor_13",1)
+end
