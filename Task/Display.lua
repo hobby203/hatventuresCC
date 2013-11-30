@@ -22,17 +22,26 @@ end
 
 function whatFile(type)
   if type == 1 then
-    return "disk/Tasks"
+    return "disk/readFiles/Tasks"
   elseif type == 2 then
-    return "disk/MTasks"
+    return "disk/readFiles/MTasks"
   elseif type == 3 then 
-    return "disk/ATasks"
+    return "disk/readFiles/ATasks"
+  elseif type == 4 then
+    return "disk/readFiles/logger"
   end
 end
 
 while true do
   display("monitor_10",1)
-  display("monitor_11",1)
-  display("monitor_12",1)
-  display("monitor_13",1)
+  display("monitor_11",2)
+  display("monitor_12",3)
+  display("monitor_13",4)
+
+  display("monitor_14",1)
+  display("monitor_15",2)
+  display("monitor_16",3)
+  display("monitor_17",4)
+
+  display("monitor_18",4)
 end
